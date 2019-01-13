@@ -30,8 +30,6 @@ namespace LexLibrary.Rbac.Sample
                 options.EnableSensitiveDataLogging();
             });
 
-            services.AddLexLibraryRbacDefaultPage();
-
             // 請自行實作 ICryptHelper, IEmailSender 介面
             services.AddScoped(typeof(ICryptHelper), typeof(CryptHelper));
             services.AddScoped(typeof(IEmailSender), typeof(EmailSender));
