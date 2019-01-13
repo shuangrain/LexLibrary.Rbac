@@ -57,7 +57,7 @@ namespace LexLibrary.Rbac.Areas.LexLibraryRbac.Controllers
                 return View(model);
             }
 
-            return RedirectToSafeUrl(model.ReturnUrl);
+            return redirectToSafeUrl(model.ReturnUrl);
         }
 
         #endregion
@@ -67,7 +67,7 @@ namespace LexLibrary.Rbac.Areas.LexLibraryRbac.Controllers
         public IActionResult Logout()
         {
             _userManage.Logout();
-            return RedirectToSafeUrl();
+            return redirectToSafeUrl();
         }
 
         #endregion
@@ -97,7 +97,7 @@ namespace LexLibrary.Rbac.Areas.LexLibraryRbac.Controllers
                 return View(model);
             }
 
-            return RedirectAndAlert(nameof(Login), "註冊成功，已發送驗證信");
+            return redirectAndAlert(nameof(Login), "註冊成功，已發送驗證信");
         }
 
         #endregion
@@ -127,7 +127,7 @@ namespace LexLibrary.Rbac.Areas.LexLibraryRbac.Controllers
                 return View(model);
             }
 
-            return RedirectAndAlert(Url.Action(nameof(Login)), result.RtnMsg);
+            return redirectAndAlert(Url.Action(nameof(Login)), result.RtnMsg);
         }
 
         #endregion
@@ -170,7 +170,7 @@ namespace LexLibrary.Rbac.Areas.LexLibraryRbac.Controllers
                 return View(model);
             }
 
-            return RedirectAndAlert(Url.Action(nameof(Login)), result.RtnMsg);
+            return redirectAndAlert(Url.Action(nameof(Login)), result.RtnMsg);
         }
 
         #endregion
@@ -182,7 +182,7 @@ namespace LexLibrary.Rbac.Areas.LexLibraryRbac.Controllers
             var result = _userManage.ConfirmEmail(d);
 
             string baseUrl = Request.GetBaseUrl();
-            return RedirectAndAlert(baseUrl, result.RtnMsg);
+            return redirectAndAlert(baseUrl, result.RtnMsg);
         }
 
         #endregion
@@ -194,13 +194,12 @@ namespace LexLibrary.Rbac.Areas.LexLibraryRbac.Controllers
             string baseUrl = Request.GetBaseUrl();
 
             var validResult = _userManage.ValidateToken(UserTokens.ResetPassword, d, out userId);
-            result = RedirectAndAlert(baseUrl, validResult.RtnMsg);
+            result = redirectAndAlert(baseUrl, validResult.RtnMsg);
 
             return validResult.IsSuccess;
         }
 
-        [NonAction]
-        protected IActionResult RedirectToSafeUrl(string url = null)
+        private IActionResult redirectToSafeUrl(string url = null)
         {
             string baseUrl = Request.GetBaseUrl();
             if (!string.IsNullOrWhiteSpace(url) &&
@@ -214,8 +213,7 @@ namespace LexLibrary.Rbac.Areas.LexLibraryRbac.Controllers
             }
         }
 
-        [NonAction]
-        public IActionResult RedirectAndAlert(string url, string message)
+        private IActionResult redirectAndAlert(string url, string message)
         {
             StringBuilder sb = new StringBuilder();
 

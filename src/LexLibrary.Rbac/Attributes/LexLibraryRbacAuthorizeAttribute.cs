@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 namespace LexLibrary.Rbac.Attributes
@@ -68,24 +69,27 @@ namespace LexLibrary.Rbac.Attributes
             if ((functionIds != null || roleIds != null) &&
                 !userManager.HasPermission(functionIds, roleIds))
             {
-                string url = null;
+                string url = request.GetBaseUrl();
 
-                if (request.Headers.ContainsKey("Referer"))
-                {
-                    url = request.Headers["Referer"].ToString();
-                    if (string.Equals(url, request.GetDisplayUrl(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        url = request.GetBaseUrl();
-                    }
-                }
-                else
-                {
-                    url = request.GetBaseUrl();
-                }
-
-                context.Result = new RedirectResult(url);
+                context.Result = redirectAndAlert(url, "權限不足，無法使用此功能。");
                 return;
             }
+        }
+
+        private IActionResult redirectAndAlert(string url, string message)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("<script>");
+            sb.AppendFormat("window.alert('{0}');", message?.Replace("'", "\""));
+            sb.AppendFormat("window.location.href = '{0}';", url?.Replace("'", "\""));
+            sb.Append("</script>");
+
+            return new ContentResult
+            {
+                Content = sb.ToString(),
+                ContentType = "text/html; charset=utf-8;"
+            };
         }
     }
 }
