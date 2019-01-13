@@ -29,18 +29,5 @@ namespace LexLibrary.Rbac.Extensions
 
             return services;
         }
-
-        public static IServiceCollection AddLexLibraryRbacDefaultPage(this IServiceCollection services)
-        {
-            var assembly = Assembly.GetExecutingAssembly();
-            services.AddMvc()
-                    .AddApplicationPart(assembly);
-            services.Configure<RazorViewEngineOptions>(options =>
-            {
-                options.FileProviders.Add(new EmbeddedFileProvider(assembly));
-            });
-
-            return services;
-        }
     }
 }
