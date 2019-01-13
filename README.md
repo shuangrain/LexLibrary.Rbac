@@ -18,6 +18,7 @@
 帳號：admin  
 密碼：zxcv1234  
 信箱：admin@exfast.me  
+部落格：[https://blog.exfast.me/2019/01/netcore-lexlibrary-rbac-based-on-role-based-access-control-implementation-verification-module/](https://blog.exfast.me/2019/01/netcore-lexlibrary-rbac-based-on-role-based-access-control-implementation-verification-module/)  
 
 ## 加入專案
 
