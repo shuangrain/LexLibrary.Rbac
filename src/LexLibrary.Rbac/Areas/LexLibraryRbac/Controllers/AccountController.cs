@@ -12,8 +12,6 @@ using System.Text;
 namespace LexLibrary.Rbac.Areas.LexLibraryRbac.Controllers
 {
     [AllowAnonymous]
-    [Area("LexLibraryRbac")]
-    [Route("LexLibraryRbac/[controller]/[action]")]
     public class AccountController : Controller
     {
         #region Ctor

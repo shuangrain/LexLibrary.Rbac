@@ -51,6 +51,7 @@ namespace LexLibrary.Rbac.Sample
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseLexLibraryRbacRoute();
 
             app.UseMvc(routes =>
             {
