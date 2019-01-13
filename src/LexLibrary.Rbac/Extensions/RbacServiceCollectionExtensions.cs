@@ -36,11 +36,9 @@ namespace LexLibrary.Rbac.Extensions
         {
             app.UseMvc(routes =>
             {
-                routes.MapAreaRoute(
-                    name: "LexLibraryRbac",
-                    areaName: "LexLibraryRbac",
-                    template: "LexLibraryRbac/{controller=Account}/{action=Login}/{id?}",
-                    defaults: new string[] { "LexLibrary.Rbac.Areas.LexLibraryRbac.Controllers" });
+                routes.MapRoute(
+                    name: "areaRoute",
+                    template: "{area:exists}/{controller}/{action}/{id?}");
             });
 
             return app;

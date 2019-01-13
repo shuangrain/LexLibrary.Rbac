@@ -11,6 +11,7 @@ using System.Text;
 
 namespace LexLibrary.Rbac.Areas.LexLibraryRbac.Controllers
 {
+    [Area("LexLibraryRbac")]
     [AllowAnonymous]
     public class AccountController : Controller
     {
