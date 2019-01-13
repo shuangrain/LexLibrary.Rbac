@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "~/Areas/LexLibraryRbac/Views/Shared/_Layout.cshtml";
+    ViewBag.BodyClass = "bg-dark";
+}
+
+<div class="container">
+    <div class="card card-login mx-auto mt-5">
+        <div class="card-header">@ViewData["Title"]</div>
+        <div class="card-body">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+@section css {
+    <style>
+        /* 修正 Alert 跑板 */
+        form .alert ul {
+            margin-bottom: 0 !important;
+        }
+    </style>
+    @RenderSection("css", required: false)
+}
+@section scripts {
+    @RenderSection("scripts", required: false)
+}

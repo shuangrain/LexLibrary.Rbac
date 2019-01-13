@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LexLibrary.Rbac", "src\LexLibrary.RBAC\LexLibrary.Rbac.csproj", "{47955457-7DC6-40D7-8E87-BA7F81C5BB21}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LexLibrary.Rbac.Sample", "src\LexLibrary.Rbac.Sample\LexLibrary.Rbac.Sample.csproj", "{D3C31A9E-89B8-4F1C-BAC9-1C62D55A8909}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47955457-7DC6-40D7-8E87-BA7F81C5BB21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47955457-7DC6-40D7-8E87-BA7F81C5BB21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47955457-7DC6-40D7-8E87-BA7F81C5BB21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47955457-7DC6-40D7-8E87-BA7F81C5BB21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3C31A9E-89B8-4F1C-BAC9-1C62D55A8909}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3C31A9E-89B8-4F1C-BAC9-1C62D55A8909}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3C31A9E-89B8-4F1C-BAC9-1C62D55A8909}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3C31A9E-89B8-4F1C-BAC9-1C62D55A8909}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2A4DD3B-01F3-41C9-B05A-9BAF5DFB49EF}
+	EndGlobalSection
+EndGlobal

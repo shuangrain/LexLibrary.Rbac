@@ -1,0 +1,12 @@
+﻿@model IEnumerable<FunctionMenu>
+
+<ul class="sidebar navbar-nav fixed-top sticky-top">
+    @foreach (var function in Model)
+    {
+        bool hasChild = (function.ChildFunctionMenu != null && function.ChildFunctionMenu.Any());
+
+        <li class="@(hasChild ? "nav-item dropdown" : "nav-item")">
+            @await Component.InvokeAsync("ParseFunctionMenu", new { function, isFirst = true })
+        </li>
+    }
+</ul>

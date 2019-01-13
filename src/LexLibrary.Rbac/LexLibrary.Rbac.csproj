@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Include="Areas\LexLibraryRbac\Views\**\*.cshtml" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Remove="Areas\LexLibraryRbac\Views\Shared\Components\FunctionMenu\Default.cshtml" />
+    <EmbeddedResource Remove="Areas\LexLibraryRbac\Views\Shared\Components\ParseFunctionMenu\Default.cshtml" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="" />
+  </ItemGroup>
+
+</Project>

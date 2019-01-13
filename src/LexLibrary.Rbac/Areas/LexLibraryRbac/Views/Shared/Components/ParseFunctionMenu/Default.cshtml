@@ -1,0 +1,35 @@
+﻿@model FunctionMenu
+@{
+    bool isFirst = ViewBag.IsFirst;
+}
+@if (Model != null)
+{
+    bool hasChild = (Model.ChildFunctionMenu != null && Model.ChildFunctionMenu.Any());
+    string id = $"function_{Model.Id}";
+    string linkProperty = hasChild ? $"id={id} role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false" : string.Empty;
+    string href = hasChild ? "javascript:" : Model.Url;
+    string linkClass = isFirst ? "nav-link" : "dropdown-item";
+    string target = Model.IsNewTab ? "_blank" : string.Empty;
+    if (hasChild)
+    {
+        linkClass += " dropdown-toggle";
+    }
+
+    <a class="@linkClass" href="@href" target="@target" @linkProperty>
+        @if (!string.IsNullOrWhiteSpace(Model.IconClass))
+        {
+            <i class="@Model.IconClass"></i>
+        }
+        <span>@Model.Name</span>
+    </a>
+
+    @if (hasChild)
+    {
+        <div class="dropdown-menu" aria-labelledby="@id">
+            @foreach (var childFunction in Model.ChildFunctionMenu)
+            {
+                @await Component.InvokeAsync("ParseFunctionMenu", new { function = childFunction, isFirst = false })
+            }
+        </div>
+    }
+}
