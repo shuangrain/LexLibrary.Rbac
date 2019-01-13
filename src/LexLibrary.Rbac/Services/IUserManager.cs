@@ -16,7 +16,7 @@ namespace LexLibrary.Rbac.Services
 
         IEnumerable<FunctionMenu> GetFunctionMenu();
 
-        bool HasPermission(IEnumerable<int> functionId = null, IEnumerable<int> roleId = null);
+        bool HasPermission(IEnumerable<int> functionIds = null, IEnumerable<int> roleIds = null)
 
         BaseResult Login(string account, string password, bool isPersistent);
 

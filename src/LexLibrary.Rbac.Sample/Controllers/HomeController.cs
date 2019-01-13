@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LexLibrary.Rbac.Sample.Controllers
 {
-    [LexLibraryRbacAuthorize(RoleIds = "2,1")]
+    [LexLibraryRbacAuthorize(RoleIds = "1")]
     public class HomeController : Controller
     {
         [AllowAnonymous]

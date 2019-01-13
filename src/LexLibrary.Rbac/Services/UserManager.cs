@@ -171,28 +171,28 @@ namespace LexLibrary.Rbac.Services
         /// </summary>
         /// <param name="functionId"></param>
         /// <returns></returns>
-        public bool HasPermission(IEnumerable<int> needFunctionIds = null, IEnumerable<int> needRoleIds = null)
+        public bool HasPermission(IEnumerable<int> functionIds = null, IEnumerable<int> roleIds = null)
         {
-            var roleIds = getUserRoleIds(UserData.Id);
+            var dbRoleIds = getUserRoleIds(UserData.Id);
 
             // admin 群組直接回傳
-            if (roleIds.Contains(ApplicationConst.AdminRoleId))
+            if (dbRoleIds.Contains(ApplicationConst.AdminRoleId))
             {
                 return true;
             }
 
-            var functionIds = getRoleFunctions(roleIds).Select(x => x.Id);
-            if (needFunctionIds != null && needRoleIds != null)
+            var dbFunctionIds = getRoleFunctions(dbRoleIds).Select(x => x.Id);
+            if (functionIds != null && roleIds != null)
             {
-                return functionIds.Intersect(needFunctionIds).Any() && roleIds.Intersect(needRoleIds).Any();
+                return dbFunctionIds.Intersect(functionIds).Any() || dbRoleIds.Intersect(roleIds).Any();
             }
-            else if (needFunctionIds != null)
+            else if (functionIds != null)
             {
-                return functionIds.Intersect(needFunctionIds).Any();
+                return dbFunctionIds.Intersect(functionIds).Any();
             }
-            else if (needRoleIds != null)
+            else if (roleIds != null)
             {
-                return roleIds.Intersect(needRoleIds).Any();
+                return dbRoleIds.Intersect(roleIds).Any();
             }
             else
             {
